@@ -13,31 +13,41 @@ var loaded = false;
 const colors = [
 {
   texture: 'img/wood_.jpg',
+  name: 'wood',
   size: [2, 2, 2],
   shininess: 60 },
 
 {
   texture: 'img/fabric_.jpg',
+  name: 'fabric',
   size: [4, 4, 4],
   shininess: 0 },
 
 {
   texture: 'img/pattern_.jpg',
+  name: 'pattern',
   size: [8, 8, 8],
   shininess: 10 },
 
 {
   texture: 'img/denim_.jpg',
+  name: 'denim',
   size: [3, 3, 3],
   shininess: 0 },
 
 {
   texture: 'img/quilt_.jpg',
+  name: 'quilt',
   size: [6, 6, 6],
   shininess: 0 },
 
 {
-  color: '374047' }/*,
+  color: 'ffffff',
+  name: 'white' },
+
+{
+  color: '374047',
+  name: 'arsenic' },
 
 {
   color: '131417' },
@@ -184,7 +194,7 @@ const colors = [
   color: '27548D' },
 
 {
-  color: '438AAC' }*/
+  color: '438AAC' }
 ];
 
 
@@ -346,42 +356,32 @@ function resizeRendererToDisplaySize(renderer) {
 
 // Function - Build Colors
 
-function getColorName(path) {
-  filename = path.substring(path.lastIndexOf('/')+1);
-  filename = filename.replace(/\.[^/.]+$/, '');
-  filename = filename.replace('_', '');
-  filename = filename.charAt(0).toUpperCase() + filename.slice(1);
-  return filename;
-}
-
-function buildColors(tray, colors) {
-  for (let [i, color] of colors.entries()) {
-    let swatch = document.createElement('option');
-    swatch.classList.add('tray__swatch');
-
-    if (color.texture)
-    {
-      //swatch.style.backgroundImage = "url(" + color.texture + ")";
-      swatch.setAttribute('data-class', "texture");
-      swatch.setAttribute('data-style', "background-image: url(" + color.texture + ")");
-      swatch.value = color.texture;
-      swatch.innerHTML = getColorName(color.texture);    //"&nbsp;";
-    } else
-    {
-      // swatch.style.background = "#" + color.color;
-      swatch.setAttribute('data-class', "texture");
-      swatch.setAttribute('data-style', "background-color: #" + color.color + ";background-image:none");
-      swatch.value = "#" + color.color;
-      swatch.innerHTML = "#" + color.color;
+function buildColors(tray) {
+  const optionColors = tray.querySelectorAll("option");
+  for(var i = 0; i < optionColors.length; i++) {
+    let option = optionColors[i];
+    let attribute = option.getAttribute('data-attribute');
+    let value = option.getAttribute('data-attribute-value');
+    if(value==null)continue;
+    for (let [j, color] of colors.entries()) {
+      if (color.name == value) {
+        // console.log('i j', i, j, value, color, color.texture);
+        if (color.texture) {
+          option.setAttribute('data-style', "background-image: url(" + color.texture + ")");
+          option.value = color.texture;
+        } else {
+          option.setAttribute('data-style', "background-color: #" + color.color + ";background-image:none");
+          option.value = "#" + color.color;
+        }
+        option.setAttribute('data-class', "texture");
+        option.setAttribute('data-key', j);
+      }
     }
-
-    swatch.setAttribute('data-key', i);
-    tray.append(swatch);
   }
 }
 
 for(var j = 0; j < TRAYS.length; j++) {
-  buildColors(TRAYS[j], colors);
+  buildColors(TRAYS[j]);
 }
 
 $.widget( "custom.iconselectmenu", $.ui.selectmenu, {
@@ -402,6 +402,7 @@ $.widget( "custom.iconselectmenu", $.ui.selectmenu, {
     return li.append( wrapper ).appendTo( ul );
   }
 });
+
 
 $( '#legs-dropdown' )
   .iconselectmenu({
