@@ -1,6 +1,5 @@
 const LOADER = document.getElementById('js-loader');
 
-const TRAYS = document.getElementsByClassName("dropdown__color");;
 const DRAG_NOTICE = document.getElementById('js-drag-notice');
 
 var theModel;
@@ -197,7 +196,7 @@ const colors = [
   color: '438AAC' }
 ];
 
-
+const parts = JSON.parse(document.getElementsByClassName('iconic-was-fees')[0].textContent);	//innerHTML
 
 
 const BACKGROUND_COLOR = 0xf1f1f1;
@@ -354,100 +353,11 @@ function resizeRendererToDisplaySize(renderer) {
   return needResize;
 }
 
-// Function - Build Colors
-
-function buildColors(tray) {
-  const optionColors = tray.querySelectorAll("option");
-  for(var i = 0; i < optionColors.length; i++) {
-    let option = optionColors[i];
-    let attribute = option.getAttribute('data-attribute');
-    let value = option.getAttribute('data-attribute-value');
-    if(value==null)continue;
-    for (let [j, color] of colors.entries()) {
-      if (color.name == value) {
-        // console.log('i j', i, j, value, color, color.texture);
-        if (color.texture) {
-          option.setAttribute('data-style', "background-image: url(" + color.texture + ")");
-          option.value = color.texture;
-        } else {
-          option.setAttribute('data-style', "background-color: #" + color.color + ";background-image:none");
-          option.value = "#" + color.color;
-        }
-        option.setAttribute('data-class', "texture");
-        option.setAttribute('data-key', j);
-      }
-    }
-  }
-}
-
-for(var j = 0; j < TRAYS.length; j++) {
-  buildColors(TRAYS[j]);
-}
-
-$.widget( "custom.iconselectmenu", $.ui.selectmenu, {
-  _renderItem: function( ul, item ) {
-    var li = $( "<li>" ),
-      wrapper = $( "<div>", { text: item.label } );
-
-    if ( item.disabled ) {
-      li.addClass( "ui-state-disabled" );
-    }
-
-    $( "<span>", {
-      style: item.element.attr( "data-style" ),
-      "class": "ui-icon " + item.element.attr( "data-class" )
-    })
-      .appendTo( wrapper );
-
-    return li.append( wrapper ).appendTo( ul );
-  }
+var selectLegs = document.getElementById('pa_back');
+selectLegs.addEventListener("change", function() {
+	activeOption = 'legs';
+	selectSwatch('pa_back', this.value);
 });
-
-
-$( '#legs-dropdown' )
-  .iconselectmenu({
-    change: function( event, data ) {
-      activeOption = 'legs';
-      selectSwatch(data.item);
-    }
-  }).iconselectmenu( 'menuWidget')
-  .addClass( 'ui-menu-icons texture' );
-
-$( '#cushions-dropdown' )
-  .iconselectmenu({
-    change: function( event, data ) {
-      activeOption = 'cushions';
-      selectSwatch(data.item);
-    }
-  }).iconselectmenu( 'menuWidget')
-  .addClass( 'ui-menu-icons texture' );
-
-$( '#base-dropdown' )
-  .iconselectmenu({
-    change: function( event, data ) {
-      activeOption = 'base';
-      selectSwatch(data.item);
-    }
-  }).iconselectmenu( 'menuWidget')
-  .addClass( 'ui-menu-icons texture' );
-
-$( '#supports-dropdown' )
-  .iconselectmenu({
-    change: function( event, data ) {
-      activeOption = 'supports';
-      selectSwatch(data.item);
-    }
-  }).iconselectmenu( 'menuWidget')
-  .addClass( 'ui-menu-icons texture' );
-
-$( '#back-dropdown' )
-  .iconselectmenu({
-    change: function( event, data ) {
-      activeOption = 'back';
-      selectSwatch(data.item);
-    }
-  }).iconselectmenu( 'menuWidget')
-  .addClass( 'ui-menu-icons texture' );
 
 
 // Select Option
@@ -466,22 +376,13 @@ function selectOption(e) {
   option.classList.add('--is-active');
 }
 
-// Swatches
-//const swatches = document.querySelectorAll(".tray__swatch");
 
-/*for (const swatch of swatches) {
-  swatch.addEventListener('click', selectSwatch);
-}*/
-
-function selectSwatch(e) {
-  // let color = colors[parseInt(e.target.dataset.key)];
-  let color = colors[parseInt(e.element[0].dataset.key)];
+function selectSwatch(key, value) {
+  let color = parts[key][value].color;
   let new_mtl;
-  // console.log('selectSwatch', e.value, e);
-  // console.log('key', e.element[0].dataset.key);
+  // console.log('parts', key, value, color, color.texture);
 
   if (color.texture) {
-
     let txt = new THREE.TextureLoader().load(color.texture);
 
     txt.repeat.set(color.size[0], color.size[1], color.size[2]);
@@ -493,13 +394,12 @@ function selectSwatch(e) {
       shininess: color.shininess ? color.shininess : 10 });
 
   } else
-
   {
     new_mtl = new THREE.MeshPhongMaterial({
-      color: parseInt('0x' + color.color),
-      shininess: color.shininess ? color.shininess : 10 });
-
-
+      // color: parseInt('0x' + color.color),
+      color: parseInt(color),
+      shininess: color.shininess ? color.shininess : 10
+    });
   }
 
   setMaterial(theModel, activeOption, new_mtl);
