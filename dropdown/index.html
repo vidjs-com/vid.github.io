@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -62,86 +63,89 @@
 </head>
 
 <body>
-	<!-- The loading element overlays all else until the model is loaded, at which point we remove this element from the DOM -->
-	<div class="loading" id="js-loader">
-		<div class="loader"></div>
+
+<!-- The loading element overlays all else until the model is loaded, at which point we remove this element from the DOM -->
+<div class="loading" id="js-loader">
+	<div class="loader"></div>
+</div>
+<!-- Just a quick notice to the user that it can be interacted with -->
+<span class="drag-notice" id="js-drag-notice">Drag to rotate 360&#176;</span>
+<!-- These toggle the the different parts of the chair that can be edited, note data-option is the key that links to the name of the part in the 3D file -->
+<div class="options">
+	<div class="option --is-active" data-option="legs">
+		<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/legs.svg" alt="" /> -->
+		<select id="pa_legs" class="dropdown__color" data-attribute="attribute_pa_legs" autocomplete="off">
+			<option value="" selected disabled hidden>Legs color</option>
+			<option data-attribute-value="wood">Wood</option>
+			<option data-attribute-value="fabric">Fabric</option>
+			<option data-attribute-value="pattern">Pattern</option>
+			<option data-attribute-value="denim">Denim</option>
+			<option data-attribute-value="quilt">Quilt</option>
+			<option data-attribute-value="white">White</option>
+			<option data-attribute-value="arsenic">Arsenic</option>
+		</select>
 	</div>
-	<!-- Just a quick notice to the user that it can be interacted with -->
-	<span class="drag-notice" id="js-drag-notice">Drag to rotate 360&#176;</span>
-	<!-- These toggle the the different parts of the chair that can be edited, note data-option is the key that links to the name of the part in the 3D file -->
-	<div class="options">
-		<div class="option --is-active" data-option="legs">
-			<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/legs.svg" alt="" /> -->
-			<select class="dropdown__color" id="legs-dropdown" data-attribute="attribute_pa_legs" autocomplete="off">
-				<option value="" selected disabled hidden>Legs color</option>
-				<option data-attribute-value="wood">Wood</option>
-				<option data-attribute-value="fabric">Fabric</option>
-				<option data-attribute-value="pattern">Pattern</option>
-				<option data-attribute-value="denim">Denim</option>
-				<option data-attribute-value="quilt">Quilt</option>
-				<option data-attribute-value="white">White</option>
-				<option data-attribute-value="arsenic">Arsenic</option>
-			</select>
-		</div>
-		<div class="option" data-option="cushions">
-			<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/cushions.svg" alt="" /> -->
-			<select class="dropdown__color" id="cushions-dropdown" data-attribute="attribute_pa_cushions" autocomplete="off">
-				<option value="" selected disabled hidden>Cushions color</option>
-				<option data-attribute-value="fabric">Fabric</option>
-				<option data-attribute-value="quilt">Quilt</option>
-				<option data-attribute-value="white">White</option>
-				<option data-attribute-value="arsenic">Arsenic</option>
-			</select>
-		</div>
-		<div class="option" data-option="base">
-			<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/base.svg" alt="" /> -->
-			<select class="dropdown__color" id="base-dropdown" data-attribute="attribute_pa_base" autocomplete="off">
-				<option value="" selected disabled hidden>Base color</option>
-				<option data-attribute-value="fabric">Fabric</option>
-				<option data-attribute-value="arsenic">Arsenic</option>
-			</select>
-		</div>
-		<div class="option" data-option="supports">
-			<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/supports.svg" alt="" /> -->
-			<select class="dropdown__color" id="supports-dropdown" data-attribute="attribute_pa_supports" autocomplete="off">
-				<option value="" selected disabled hidden>Supports color</option>
-				<option data-attribute-value="wood">Wood</option>
-				<option data-attribute-value="fabric">Fabric</option>
-				<option data-attribute-value="pattern">Pattern</option>
-				<option data-attribute-value="denim">Denim</option>
-				<option data-attribute-value="quilt">Quilt</option>
-			</select>
-		</div>
-		<div class="option" data-option="back">
-			<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/back.svg" alt="" /> -->
-			<select class="dropdown__color" id="back-dropdown" data-attribute="attribute_pa_back" autocomplete="off">
-				<option value="" selected disabled hidden>Back color</option>
-				<option data-attribute-value="white">White</option>
-				<option data-attribute-value="arsenic">Arsenic</option>
-				<option data-attribute-value="wood">Wood</option>
-				<option data-attribute-value="fabric">Fabric</option>
-				<option data-attribute-value="pattern">Pattern</option>
-				<option data-attribute-value="denim">Denim</option>
-				<option data-attribute-value="quilt">Quilt</option>
-			</select>
+	<div class="option" data-option="cushions">
+		<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/cushions.svg" alt="" /> -->
+		<select id="pa_cushions" class="dropdown__color" data-attribute="attribute_pa_cushions" autocomplete="off">
+			<option value="" selected disabled hidden>Cushions color</option>
+			<option data-attribute-value="fabric">Fabric</option>
+			<option data-attribute-value="quilt">Quilt</option>
+			<option data-attribute-value="white">White</option>
+			<option data-attribute-value="arsenic">Arsenic</option>
+		</select>
+	</div>
+	<div class="option" data-option="base">
+		<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/base.svg" alt="" /> -->
+		<select id="pa_base" class="dropdown__color" data-attribute="attribute_pa_base" autocomplete="off">
+			<option value="" selected disabled hidden>Base color</option>
+			<option data-attribute-value="fabric">Fabric</option>
+			<option data-attribute-value="arsenic">Arsenic</option>
+		</select>
+	</div>
+	<div class="option" data-option="supports">
+		<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/supports.svg" alt="" /> -->
+		<select id="pa_supports" class="dropdown__color" data-attribute="attribute_pa_supports" autocomplete="off">
+			<option value="" selected disabled hidden>Supports color</option>
+			<option data-attribute-value="wood">Wood</option>
+			<option data-attribute-value="fabric">Fabric</option>
+			<option data-attribute-value="pattern">Pattern</option>
+			<option data-attribute-value="denim">Denim</option>
+			<option data-attribute-value="quilt">Quilt</option>
+		</select>
+	</div>
+	<div class="option" data-option="back">
+		<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/back.svg" alt="" /> -->
+		<select id="pa_back" class="dropdown__color" data-attribute="attribute_pa_back" autocomplete="off">
+			<option value="" selected disabled hidden>Back color</option>
+			<option data-attribute-value="white">White</option>
+			<option data-attribute-value="arsenic">Arsenic</option>
+			<option data-attribute-value="wood">Wood</option>
+			<option data-attribute-value="fabric">Fabric</option>
+			<option data-attribute-value="pattern">Pattern</option>
+			<option data-attribute-value="denim">Denim</option>
+			<option data-attribute-value="quilt">Quilt</option>
+		</select>
+	</div>
+</div>
+<!-- The canvas element is used to draw the 3D scene -->
+<canvas id="c"></canvas>
+<div class="controls">
+	<div class="info">
+		<div class="info__message">
+			<p><strong>&nbsp;Grab&nbsp;</strong> to rotate chair. <strong>&nbsp;Scroll&nbsp;</strong> to zoom. <strong>&nbsp;Drag&nbsp;</strong> swatches to view more.</p>
 		</div>
 	</div>
-	<!-- The canvas element is used to draw the 3D scene -->
-	<canvas id="c"></canvas>
-	<div class="controls">
-		<div class="info">
-			<div class="info__message">
-				<p><strong>&nbsp;Grab&nbsp;</strong> to rotate chair. <strong>&nbsp;Scroll&nbsp;</strong> to zoom. <strong>&nbsp;Drag&nbsp;</strong> swatches to view more.</p>
-			</div>
-		</div>
-	</div>
-	<!-- The main three.js file -->
-	<script src='https://unpkg.com/three@0.127.0/build/three.js'></script>
-	<!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
-	<script src='https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
-	<!-- This is a simple to use extension for three.js that activates all the rotating, dragging and zooming controls we need for both mouse and touch, there isn't a clear CDN for this that I can find -->
-	<script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
-	<script src="script.js"></script>
+</div>
+
+<!-- The main three.js file -->
+<script src='https://unpkg.com/three@0.127.0/build/three.js'></script>
+<!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
+<script src='https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
+<!-- This is a simple to use extension for three.js that activates all the rotating, dragging and zooming controls we need for both mouse and touch, there isn't a clear CDN for this that I can find -->
+<script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
+<script src="selectmenu.js"></script>
+
 </body>
 
 </html>
