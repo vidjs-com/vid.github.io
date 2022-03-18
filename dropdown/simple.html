@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,6 +10,12 @@
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<!-- We add the loader CSS here so that assets don't pop in before the bundled CSS is loaded -->
 	<style>
+	.elementor-add-to-cart.elementor-product-variable {
+		padding-left: 480px;
+	}
+	.variations_form {
+		min-width: 480px;
+	}
 	.loading {
 		position: fixed;
 		z-index: 50;
@@ -147,6 +154,7 @@
 }
 </script>
 
+<!-- These toggle the the different parts of the chair that can be edited, note data-option is the key that links to the name of the part in the 3D file -->
 <div class="elementor-add-to-cart elementor-product-variable">
 	<form class="variations_form cart" action="https://" method="post" enctype='multipart/form-data' data-product_id="491">
 		<table class="variations" cellspacing="0">
@@ -167,6 +175,86 @@
 						</select>
 					</td>
 				</tr>
+				<tr>
+					<th class="label">
+						<label for="pa_base">
+							<strong>Fenster Farbe Links Vorn</strong>: <span class="iconic-was-chosen-attribute">
+								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
+							</span>
+						</label>
+					</th>
+					<td class="value">
+						<select id="pa_base" class="" name="attribute_pa_base" data-attribute_name="attribute_pa_base" data-show_option_none="yes">
+							<option value="">Wähle eine Option</option>
+							<option value="grau">Grau</option>
+							<option value="opal">Opal</option>
+							<option value="blau">Blau</option>
+							<option value="gruen">Grün</option>
+							<option value="orange">Orange</option>
+							<option value="rot">Rot</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="label">
+						<label for="pa_cushions">
+							<strong>Window Color Left Back</strong>: <span class="iconic-was-chosen-attribute">
+								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
+							</span>
+						</label>
+					</th>
+					<td class="value">
+						<select id="pa_cushions" class="" name="attribute_pa_cushions" data-attribute_name="attribute_pa_cushions" data-show_option_none="yes">
+							<option value="">Wähle eine Option</option>
+							<option value="grau">Grau</option>
+							<option value="opal">Opal</option>
+							<option value="blau">Blau</option>
+							<option value="gruen">Grün</option>
+							<option value="orange">Orange</option>
+							<option value="rot">Rot</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="label">
+						<label for="pa_legs">
+							<strong>Window Color Back</strong>: <span class="iconic-was-chosen-attribute">
+								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
+							</span>
+						</label>
+					</th>
+					<td class="value">
+						<select id="pa_legs" class="" name="attribute_pa_legs" data-attribute_name="attribute_pa_legs" data-show_option_none="yes">
+							<option value="">Wähle eine Option</option>
+							<option value="grau">Grau</option>
+							<option value="opal">Opal</option>
+							<option value="blau">Blau</option>
+							<option value="gruen">Grün</option>
+							<option value="orange">Orange</option>
+							<option value="rot">Rot</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="label">
+						<label for="pa_supports">
+							<strong>Window Color Right Back</strong>: <span class="iconic-was-chosen-attribute">
+								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
+							</span>
+						</label>
+					</th>
+					<td class="value">
+						<select id="pa_supports" class="" name="attribute_pa_supports" data-attribute_name="attribute_pa_supports" data-show_option_none="yes">
+							<option value="">Wähle eine Option</option>
+							<option value="grau">Grau</option>
+							<option value="opal">Opal</option>
+							<option value="blau">Blau</option>
+							<option value="gruen">Grün</option>
+							<option value="orange">Orange</option>
+							<option value="rot">Rot</option>
+						</select>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</form>
@@ -181,13 +269,15 @@
 		</div>
 	</div>
 </div>
+
 <!-- The main three.js file -->
 <script src='https://unpkg.com/three@0.127.0/build/three.js'></script>
 <!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
 <script src='https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
 <!-- This is a simple to use extension for three.js that activates all the rotating, dragging and zooming controls we need for both mouse and touch, there isn't a clear CDN for this that I can find -->
 <script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
-<script src="script.js"></script>
+<script src="simple.js"></script>
+
 </body>
 
 </html>
