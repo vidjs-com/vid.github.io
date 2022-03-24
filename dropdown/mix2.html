@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>3D Model Color Customizer App | Codrops</title>
+	<link href="https://fonts.googleapis.com/css?family=Raleway:500,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<!-- We add the loader CSS here so that assets don't pop in before the bundled CSS is loaded -->
+	<style>
+	.elementor-add-to-cart.elementor-product-variable {
+		padding-left: 480px;
+		/*padding-left: 8px;*/
+	}
+	.variations_form {
+		min-width: 480px;
+		/*min-width: 8px;*/
+	}
+	.loading {
+		position: fixed;
+		z-index: 50;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: #f1f1f1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.loader {
+		-webkit-perspective: 120px;
+		-moz-perspective: 120px;
+		-ms-perspective: 120px;
+		perspective: 120px;
+		width: 100px;
+		height: 100px;
+	}
+
+	.loader::before {
+		content: "";
+		position: absolute;
+		left: 25px;
+		top: 25px;
+		width: 50px;
+		height: 50px;
+		background-color: #ff0000;
+		animation: flip 1s infinite;
+	}
+
+	@keyframes flip {
+		0% {
+			transform: rotate(0);
+		}
+
+		50% {
+			transform: rotateY(180deg);
+		}
+
+		100% {
+			transform: rotateY(180deg) rotateX(180deg);
+		}
+	}
+	</style>
+</head>
+
+<body>
+
+<!-- The loading element overlays all else until the model is loaded, at which point we remove this element from the DOM -->
+<div class="loading" id="js-loader">
+	<div class="loader"></div>
+</div>
+<!-- Just a quick notice to the user that it can be interacted with -->
+<span class="drag-notice" id="js-drag-notice">Drag to rotate 360&#176;</span>
+
+<script class="iconic-was-fees" type="application/json">
+{
+	"pa_legs-type":{
+		"birke":{
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"erle":{
+			"default":15,
+			"price_including_tax":15,
+			"price_excluding_tax":12.6099999999999994315658113919198513031005859375
+		},
+		"esche":{
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"kernbuche":{
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"kirschbaum":{
+			"default":50,
+			"price_including_tax":50,
+			"price_excluding_tax":42.02000000000000312638803734444081783294677734375
+		},
+		"multiplex":{
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"wildeiche":{
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		}
+	},
+	"pa_back":{
+		"blau":{
+			"color": "0x0088ff",
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"grau":{
+			"color": "0xc4c4cc",
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"gruen":{
+			"color": "0x228B22",
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"opal":{
+			"color": "0xa8c3bc",
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"orange":{
+			"color": "0xff5733",
+			"default":0,
+			"price_including_tax":0,
+			"price_excluding_tax":0
+		},
+		"rot":{
+			"color": "0xFF0000",
+			"default":5,
+			"price_including_tax":5,
+			"price_excluding_tax":4.20000000000000017763568394002504646778106689453125
+		}
+	}
+}
+</script>
+
+<!-- These toggle the the different parts of the chair that can be edited, note data-option is the key that links to the name of the part in the 3D file -->
+<div class="elementor-add-to-cart elementor-product-variable">
+	<form class="variations_form cart" action="https://" method="post" enctype='multipart/form-data' data-product_id="491">
+		<table class="variations" cellspacing="0">
+			<tbody>
+				<tr>
+					<th class="label">
+						<label for="pa_back"><strong>Fenster Farbe Oben</strong>: <span class="iconic-was-chosen-attribute"><span class="iconic-was-chosen-attribute__no-selection">No selection</span></span></label>
+					</th>
+					<td class="value">
+						<select id="pa_back" class="" name="attribute_pa_back" data-attribute_name="attribute_pa_back" data-show_option_none="yes" autocomplete="off">
+							<option value="">Wähle eine Option</option>
+							<option value="grau">Grau</option>
+							<option value="opal">Opal</option>
+							<option value="blau">Blau</option>
+							<option value="gruen">Grün</option>
+							<option value="orange">Orange</option>
+							<option value="rot">Rot (+5,00&nbsp;&euro;)</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="label">
+						<label for="pa_base">
+							<strong>Fenster Farbe Links Vorn</strong>: <span class="iconic-was-chosen-attribute">
+								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
+							</span>
+						</label>
+					</th>
+					<td class="value">
+						<select id="pa_base" class="" name="attribute_pa_base" data-attribute_name="attribute_pa_base" data-show_option_none="yes" autocomplete="off">
+							<option value="" selected disabled hidden>Wähle eine Option</option>
+							<option data-attribute-value="wood">Wood</option>
+							<option data-attribute-value="fabric">Fabric</option>
+							<option data-attribute-value="pattern">Pattern</option>
+							<option data-attribute-value="denim">Denim</option>
+							<option data-attribute-value="quilt">Quilt</option>
+							<option data-attribute-value="white">White</option>
+							<option data-attribute-value="arsenic">Arsenic</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="label">
+						<label for="pa_cushions">
+							<strong>Window Color Left Back</strong>: <span class="iconic-was-chosen-attribute">
+								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
+							</span>
+						</label>
+					</th>
+					<td class="value">
+						<select id="pa_cushions" class="" name="attribute_pa_cushions" data-attribute_name="attribute_pa_cushions" data-show_option_none="yes" autocomplete="off">
+							<option value="" selected disabled hidden>Wähle eine Option</option>
+							<option data-attribute-value="fabric">Fabric</option>
+							<option data-attribute-value="quilt">Quilt</option>
+							<option data-attribute-value="white">White</option>
+							<option data-attribute-value="arsenic">Arsenic</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="label">
+						<label for="pa_legs">
+							<strong>Window Color Back</strong>: <span class="iconic-was-chosen-attribute">
+								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
+							</span>
+						</label>
+					</th>
+					<td class="value">
+						<select id="pa_legs" class="" name="attribute_pa_legs" data-attribute_name="attribute_pa_legs" data-show_option_none="yes" autocomplete="off">
+							<option value="" selected disabled hidden>Wähle eine Option</option>
+							<option data-attribute-value="fabric">Fabric</option>
+							<option data-attribute-value="arsenic">Arsenic</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="label">
+						<label for="pa_supports">
+							<strong>Window Color Right Back</strong>: <span class="iconic-was-chosen-attribute">
+								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
+							</span>
+						</label>
+					</th>
+					<td class="value">
+						<select id="pa_supports" class="" name="attribute_pa_supports" data-attribute_name="attribute_pa_supports" data-show_option_none="yes" autocomplete="off">
+							<option value="" selected disabled hidden>Wähle eine Option</option>
+							<option data-attribute-value="wood">Wood</option>
+							<option data-attribute-value="fabric">Fabric</option>
+							<option data-attribute-value="pattern">Pattern</option>
+							<option data-attribute-value="denim">Denim</option>
+							<option data-attribute-value="quilt">Quilt</option>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<br/>
+	<div class="wapf-field-container wapf-field-color-swatch swatchbackground" style="width:100%;" for="622deaee195bd">
+		<div class="wapf-field-label wapf--above">
+			<label><span>Links Vorn</span> <abbr class="required" title="erforderlich">*</abbr> (FOR LEGS)</label>
+		</div>
+		<div class="wapf-field-input">
+			<div class="wapf-swatch-wrapper" data-is-required="1">
+				<input type="hidden" class="wapf-tf-h" data-fid="622deaee195bd" value="0" name="wapf[field_622deaee195bd]" />
+				<div class="wapf-swatch wapf-swatch--color">
+					<div style="background-color: #5b5a5f;width:30px;height:30px" class="wapf-color wapf--circle"></div>
+					<input autocomplete="off" type="radio" id="wapf_field_622deaee195bd_haqnn" name="wapf[field_622deaee195bd]" class="wapf-input" data-field-id="622deaee195bd" value="haqnn" data-wapf-label="Grau" data-is-required="1" required onclick="selectSwatch(0x5b5a5f, 'legs')" />
+					<span class="wapf-ttp" ><span >Grau</span></span>
+				</div>
+				<div class="wapf-swatch wapf-swatch--color">
+					<div style="background-color: #ff0000;width:30px;height:30px" class="wapf-color wapf--circle"></div>
+					<input autocomplete="off" type="radio" id="wapf_field_622deaee195bd_x0ox3" name="wapf[field_622deaee195bd]" class="wapf-input" data-field-id="622deaee195bd" value="x0ox3" data-wapf-label="Opal" data-is-required="1" required onclick="selectSwatch(0xff0000, 'legs')"/>
+					<span class="wapf-ttp" ><span >Opal</span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- The canvas element is used to draw the 3D scene -->
+<canvas id="c"></canvas>
+<div class="controls">
+	<div class="info">
+		<div class="info__message">
+			<p><strong>&nbsp;Grab&nbsp;</strong> to rotate chair. <strong>&nbsp;Scroll&nbsp;</strong> to zoom. <strong>&nbsp;Drag&nbsp;</strong> swatches to view more.</p>
+		</div>
+	</div>
+</div>
+
+<!-- The main three.js file -->
+<script src='https://unpkg.com/three@0.127.0/build/three.js'></script>
+<!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
+<script src='https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
+<!-- This is a simple to use extension for three.js that activates all the rotating, dragging and zooming controls we need for both mouse and touch, there isn't a clear CDN for this that I can find -->
+<script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
+<script src="mix2.js"></script>
+
+</body>
+
+</html>
