@@ -315,7 +315,7 @@ document.getElementById('wapf_field_622deaee195bd_haqnn').addEventListener("clic
   selectSwatch(color, activeOption);
 });
 
-document.getElementById('wapf_field_622deaee195bd_haqnn').addEventListener("click", function() {
+document.getElementById('wapf_field_622deaee195bd_x0ox3').addEventListener("click", function() {
   activeOption = 'legs';
   let color = '0xff0000';
   selectSwatch(color, activeOption);
