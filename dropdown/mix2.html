@@ -15,9 +15,11 @@
 	<style>
 	.elementor-add-to-cart.elementor-product-variable {
 		padding-left: 480px;
+		/*padding-left: 8px;*/
 	}
 	.variations_form {
 		min-width: 480px;
+		/*min-width: 8px;*/
 	}
 	.loading {
 		position: fixed;
@@ -159,7 +161,7 @@
 
 <!-- These toggle the the different parts of the chair that can be edited, note data-option is the key that links to the name of the part in the 3D file -->
 <div class="elementor-add-to-cart elementor-product-variable">
-	<form class="variations_form cart" action="https://" method="post" enctype='multipart/form-data' data-product_id="491">
+	<!-- <form class="variations_form cart" action="https://" method="post" enctype='multipart/form-data' data-product_id="491"> -->
 		<table class="variations" cellspacing="0">
 			<tbody>
 				<tr>
@@ -254,7 +256,7 @@
 				</tr>
 			</tbody>
 		</table>
-	</form>
+	<!-- </form> -->
 	<br/>
 	<div class="wapf-field-container wapf-field-color-swatch swatchbackground" style="width:100%;" for="622deaee195bd">
 		<div class="wapf-field-label wapf--above">
@@ -265,12 +267,12 @@
 				<input type="hidden" class="wapf-tf-h" data-fid="622deaee195bd" value="0" name="wapf[field_622deaee195bd]" />
 				<div class="wapf-swatch wapf-swatch--color">
 					<div style="background-color: #5b5a5f;width:30px;height:30px" class="wapf-color wapf--circle"></div>
-					<input autocomplete="off" type="radio" id="wapf_field_622deaee195bd_haqnn" name="wapf[field_622deaee195bd]" class="wapf-input" data-field-id="622deaee195bd" value="haqnn" data-wapf-label="Grau" data-is-required="1" required onclick="selectSwatch(0x5b5a5f, 'legs')" />
+					<input autocomplete="off" type="radio" id="wapf_field_622deaee195bd_haqnn" name="wapf[field_622deaee195bd]" class="wapf-input" data-field-id="622deaee195bd" value="haqnn" data-wapf-label="Grau" data-is-required="1" required />
 					<span class="wapf-ttp" ><span >Grau</span></span>
 				</div>
 				<div class="wapf-swatch wapf-swatch--color">
 					<div style="background-color: #ff0000;width:30px;height:30px" class="wapf-color wapf--circle"></div>
-					<input autocomplete="off" type="radio" id="wapf_field_622deaee195bd_x0ox3" name="wapf[field_622deaee195bd]" class="wapf-input" data-field-id="622deaee195bd" value="x0ox3" data-wapf-label="Opal" data-is-required="1" required onclick="selectSwatch(0xff0000, 'legs')"/>
+					<input autocomplete="off" type="radio" id="wapf_field_622deaee195bd_x0ox3" name="wapf[field_622deaee195bd]" class="wapf-input" data-field-id="622deaee195bd" value="x0ox3" data-wapf-label="Opal" data-is-required="1" required />
 					<span class="wapf-ttp" ><span >Opal</span></span>
 				</div>
 			</div>
@@ -294,7 +296,8 @@
 <script src='https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
 <!-- This is a simple to use extension for three.js that activates all the rotating, dragging and zooming controls we need for both mouse and touch, there isn't a clear CDN for this that I can find -->
 <script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
-<script src="mix2.js"></script>
+<script src="modal.js"></script>
+<script src="chair.js"></script>
 
 </body>
 
