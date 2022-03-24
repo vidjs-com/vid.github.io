@@ -309,7 +309,7 @@ $( '#pa_supports' )
   }).iconselectmenu( 'menuWidget')
   .addClass( 'ui-menu-icons texture' );
 
-document.getElementById('wapf_field_622deaee195bd_haqnn').addEventListener("click", function() {
+/*document.getElementById('wapf_field_622deaee195bd_haqnn').addEventListener("click", function() {
   activeOption = 'legs';
   let color = '0x5b5a5f';
   selectSwatch(color, activeOption);
@@ -319,4 +319,116 @@ document.getElementById('wapf_field_622deaee195bd_x0ox3').addEventListener("clic
   activeOption = 'legs';
   let color = '0xff0000';
   selectSwatch(color, activeOption);
-});
+});*/
+
+const colorlist = [
+{
+  texture: 'img/wood_.jpg',
+  name: 'wood',
+  size: [2, 2, 2],
+  shininess: 60
+},
+{
+  value: 'y6y6i',
+  name: 'Grau',
+  color: 0x5b5a5f
+},
+{
+  value: 'dunbi',
+  name: 'Gray',
+  color: 0x5b5a5f
+},
+{
+  value: 'ykxwr',
+  name: 'Opal',
+  color: 0xffffff
+},
+{
+  value: 'enpbs',
+  name: 'Opal',
+  color: 0xffffff
+},
+{
+  value: 'yykai',
+  name: 'Blau',
+  color: 0x444aa0
+},
+{
+  value: 'nc40d',
+  name: 'Blue',
+  color: 0x444aa0
+},
+{
+  value: 'zk845',
+  name: 'Grün',
+  color: 0x589943
+},
+{
+  value: 'bh7v4',
+  name: 'Green',
+  color: 0x589943
+},
+{
+  value: 'te7m4',
+  name: 'Red',
+  color: 0xbc2e34
+},
+{
+  value: '0ilhi',
+  name: 'Green',
+  color: 0xbc2e34
+},
+{
+  value: 's76p6',
+  name: 'Orange',
+  color: 0xd46c17
+},
+{
+  value: '5o0yv',
+  name: 'Orange',
+  color: 0xd46c17
+}
+];
+
+//var obens = document.querySelectorAll('[name=wapf[field_622deaee195b8]]');
+var obennodes = document.querySelectorAll("input[data-field-id='622deaee195b8']");
+var obens = Array.prototype.slice.call(obennodes, 0);
+// console.log('obennodes', obennodes);
+// console.log('obens', obens);
+
+for (oben in obens) {
+  // console.log('oben', obens[oben]);
+  obens[oben].addEventListener("click", function() {
+    // console.log('click', this.value, this);
+    activeOption = 'legs';
+    let color;
+    for (let [i, item] of colorlist.entries()) {
+      // console.log('i, color', i, color);
+      if (this.value == item.value) {
+        color = item.color;
+      }
+    }
+    selectSwatch(color, activeOption);
+  });
+}
+
+var rearnodes = document.querySelectorAll("input[data-field-id='622deaee195c0']");
+var rears = Array.prototype.slice.call(rearnodes, 0);
+// console.log('rearnodes', rearnodes);
+// console.log('rears', rears);
+
+for (rear in rears) {
+  // console.log('rear', rears[rear]);
+  rears[rear].addEventListener("click", function() {
+    // console.log('click', this.value, this);
+    activeOption = 'cushions';
+    let color;
+    for (let [i, item] of colorlist.entries()) {
+      // console.log('i, color', i, color);
+      if (this.value == item.value) {
+        color = item.color;
+      }
+    }
+    selectSwatch(color, activeOption);
+  });
+}
