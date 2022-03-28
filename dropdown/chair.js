@@ -37,6 +37,10 @@ const colorlist = [
   color: 0xbc2e34
 },
 {
+  name: 'Rot',
+  color: 0xbc2e34
+},
+{
   name: 'Orange',
   color: 0xd46c17
 }];
