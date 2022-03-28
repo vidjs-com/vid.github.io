@@ -11,13 +11,13 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<!-- We add the loader CSS here so that assets don't pop in before the bundled CSS is loaded -->
 	<style>
 	.elementor-add-to-cart.elementor-product-variable {
-		padding-left: 480px;
+		min-width: 840px;
+		padding-left: 430px;
 	}
-	.variations_form {
-		min-width: 480px;
-	}
+
 	.loading {
 		position: fixed;
 		z-index: 50;
@@ -76,205 +76,50 @@
 <!-- Just a quick notice to the user that it can be interacted with -->
 <span class="drag-notice" id="js-drag-notice">Drag to rotate 360&#176;</span>
 
-<script class="iconic-was-fees" type="application/json">
-{
-	"pa_legs-type":{
-		"birke":{
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"erle":{
-			"default":15,
-			"price_including_tax":15,
-			"price_excluding_tax":12.6099999999999994315658113919198513031005859375
-		},
-		"esche":{
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"kernbuche":{
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"kirschbaum":{
-			"default":50,
-			"price_including_tax":50,
-			"price_excluding_tax":42.02000000000000312638803734444081783294677734375
-		},
-		"multiplex":{
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"wildeiche":{
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		}
-	},
-	"pa_back":{
-		"blau":{
-			"color": "0x0088ff",
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"grau":{
-			"color": "0xc4c4cc",
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"gruen":{
-			"color": "0x228B22",
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"opal":{
-			"color": "0xa8c3bc",
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"orange":{
-			"color": "0xff5733",
-			"default":0,
-			"price_including_tax":0,
-			"price_excluding_tax":0
-		},
-		"rot":{
-			"color": "0xFF0000",
-			"default":5,
-			"price_including_tax":5,
-			"price_excluding_tax":4.20000000000000017763568394002504646778106689453125
-		}
-	}
-}
-</script>
-
 <!-- These toggle the the different parts of the chair that can be edited, note data-option is the key that links to the name of the part in the 3D file -->
 <div class="elementor-add-to-cart elementor-product-variable">
-	<form class="variations_form cart" action="https://" method="post" enctype='multipart/form-data' data-product_id="491">
-		<table class="variations" cellspacing="0">
-			<tbody>
-				<tr>
-					<th class="label">
-						<label for="pa_back"><strong>Fenster Farbe Oben</strong>: <span class="iconic-was-chosen-attribute"><span class="iconic-was-chosen-attribute__no-selection">No selection</span></span></label>
-					</th>
-					<td class="value">
-						<select id="pa_back" class="" name="attribute_pa_back" data-attribute_name="attribute_pa_back" data-show_option_none="yes" autocomplete="off">
-							<option value="">Wähle eine Option</option>
-							<option value="grau">Grau</option>
-							<option value="opal">Opal</option>
-							<option value="blau">Blau</option>
-							<option value="gruen">Grün</option>
-							<option value="orange">Orange</option>
-							<option value="rot">Rot (+5,00&nbsp;&euro;)</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th class="label">
-						<label for="pa_base">
-							<strong>Fenster Farbe Links Vorn</strong>: <span class="iconic-was-chosen-attribute">
-								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
-							</span>
-						</label>
-					</th>
-					<td class="value">
-						<select id="pa_base" class="" name="attribute_pa_base" data-attribute_name="attribute_pa_base" data-show_option_none="yes" autocomplete="off">
-							<option value="" selected disabled hidden>Wähle eine Option</option>
-							<option data-attribute-value="wood">Wood</option>
-							<option data-attribute-value="fabric">Fabric</option>
-							<option data-attribute-value="pattern">Pattern</option>
-							<option data-attribute-value="denim">Denim</option>
-							<option data-attribute-value="quilt">Quilt</option>
-							<option data-attribute-value="white">White</option>
-							<option data-attribute-value="arsenic">Arsenic</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th class="label">
-						<label for="pa_cushions">
-							<strong>Window Color Left Back</strong>: <span class="iconic-was-chosen-attribute">
-								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
-							</span>
-						</label>
-					</th>
-					<td class="value">
-						<select id="pa_cushions" class="" name="attribute_pa_cushions" data-attribute_name="attribute_pa_cushions" data-show_option_none="yes" autocomplete="off">
-							<option value="" selected disabled hidden>Wähle eine Option</option>
-							<option data-attribute-value="fabric">Fabric</option>
-							<option data-attribute-value="quilt">Quilt</option>
-							<option data-attribute-value="white">White</option>
-							<option data-attribute-value="arsenic">Arsenic</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th class="label">
-						<label for="pa_legs">
-							<strong>Window Color Back</strong>: <span class="iconic-was-chosen-attribute">
-								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
-							</span>
-						</label>
-					</th>
-					<td class="value">
-						<select id="pa_legs" class="" name="attribute_pa_legs" data-attribute_name="attribute_pa_legs" data-show_option_none="yes" autocomplete="off">
-							<option value="" selected disabled hidden>Wähle eine Option</option>
-							<option data-attribute-value="fabric">Fabric</option>
-							<option data-attribute-value="arsenic">Arsenic</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th class="label">
-						<label for="pa_supports">
-							<strong>Window Color Right Back</strong>: <span class="iconic-was-chosen-attribute">
-								<span class="iconic-was-chosen-attribute__no-selection">No selection</span>
-							</span>
-						</label>
-					</th>
-					<td class="value">
-						<select id="pa_supports" class="" name="attribute_pa_supports" data-attribute_name="attribute_pa_supports" data-show_option_none="yes" autocomplete="off">
-							<option value="" selected disabled hidden>Wähle eine Option</option>
-							<option data-attribute-value="wood">Wood</option>
-							<option data-attribute-value="fabric">Fabric</option>
-							<option data-attribute-value="pattern">Pattern</option>
-							<option data-attribute-value="denim">Denim</option>
-							<option data-attribute-value="quilt">Quilt</option>
-						</select>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
+	<label><span>Oben</span></label>
+	<!-- <input type="hidden" class="wapf-tf-h" data-fid="622deaee195b8" value="0" name="wapf[field_622deaee195b8]" /> -->
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195b8_y6y6i" name="wapf[field_622deaee195b8]" class="wapf-input" data-field-id="622deaee195b8" value="y6y6i" data-wapf-label="Grau" data-is-required="1" required />
+	<span class="wapf-ttp" >Grau</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195b8_ykxwr" name="wapf[field_622deaee195b8]" class="wapf-input" data-field-id="622deaee195b8" value="ykxwr" data-wapf-label="Opal" data-is-required="1" required />
+	<span class="wapf-ttp" >Opal</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195b8_yykai" name="wapf[field_622deaee195b8]" class="wapf-input" data-field-id="622deaee195b8" value="yykai" data-wapf-label="Blau" data-is-required="1" required />
+	<span class="wapf-ttp" >Blau</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195b8_zk845" name="wapf[field_622deaee195b8]" class="wapf-input" data-field-id="622deaee195b8" value="zk845" data-wapf-label="Grün" data-is-required="1" required />
+	<span class="wapf-ttp" >Grün</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195b8_te7m4" name="wapf[field_622deaee195b8]" class="wapf-input" data-field-id="622deaee195b8" value="te7m4" data-wapf-label="Rot" data-is-required="1" required data-wapf-pricetype="fixed" data-wapf-price="5" />
+	<span class="wapf-ttp" >Red</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195b8_s76p6" name="wapf[field_622deaee195b8]" class="wapf-input" data-field-id="622deaee195b8" value="s76p6" data-wapf-label="Orange" data-is-required="1" required data-wapf-pricetype="fixed" data-wapf-price="10" />
+	<span class="wapf-ttp" >Orange</span>
+
 	<br/>
-	<div class="wapf-field-container wapf-field-color-swatch swatchbackground" style="width:100%;" for="622deaee195bd">
-		<div class="wapf-field-label wapf--above">
-			<label><span>Links Vorn</span> <abbr class="required" title="erforderlich">*</abbr> (FOR LEGS)</label>
-		</div>
-		<div class="wapf-field-input">
-			<div class="wapf-swatch-wrapper" data-is-required="1">
-				<input type="hidden" class="wapf-tf-h" data-fid="622deaee195bd" value="0" name="wapf[field_622deaee195bd]" />
-				<div class="wapf-swatch wapf-swatch--color">
-					<div style="background-color: #5b5a5f;width:30px;height:30px" class="wapf-color wapf--circle"></div>
-					<input autocomplete="off" type="radio" id="wapf_field_622deaee195bd_haqnn" name="wapf[field_622deaee195bd]" class="wapf-input" data-field-id="622deaee195bd" value="haqnn" data-wapf-label="Grau" data-is-required="1" required />
-					<span class="wapf-ttp" ><span >Grau</span></span>
-				</div>
-				<div class="wapf-swatch wapf-swatch--color">
-					<div style="background-color: #ff0000;width:30px;height:30px" class="wapf-color wapf--circle"></div>
-					<input autocomplete="off" type="radio" id="wapf_field_622deaee195bd_x0ox3" name="wapf[field_622deaee195bd]" class="wapf-input" data-field-id="622deaee195bd" value="x0ox3" data-wapf-label="Opal" data-is-required="1" required />
-					<span class="wapf-ttp" ><span >Opal</span></span>
-				</div>
-			</div>
-		</div>
-	</div>
+
+	<label><span>Rear</span></label>
+	<input type="hidden" class="wapf-tf-h" data-fid="622deaee195c0" value="0" name="wapf[field_622deaee195c0]" />
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195c0_dunbi" name="wapf[field_622deaee195c0]" class="wapf-input" data-field-id="622deaee195c0" value="dunbi" data-wapf-label="Gray" data-is-required="1" required />
+	<span class="wapf-ttp" >Gray</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195c0_enpbs" name="wapf[field_622deaee195c0]" class="wapf-input" data-field-id="622deaee195c0" value="enpbs" data-wapf-label="Opal" data-is-required="1" required />
+	<span class="wapf-ttp" >Opal</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195c0_nc40d" name="wapf[field_622deaee195c0]" class="wapf-input" data-field-id="622deaee195c0" value="nc40d" data-wapf-label="Blue" data-is-required="1" required />
+	<span class="wapf-ttp" >Blue</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195c0_bh7v4" name="wapf[field_622deaee195c0]" class="wapf-input" data-field-id="622deaee195c0" value="bh7v4" data-wapf-label="Green" data-is-required="1" required />
+	<span class="wapf-ttp" >Green</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195c0_0ilhi" name="wapf[field_622deaee195c0]" class="wapf-input" data-field-id="622deaee195c0" value="0ilhi" data-wapf-label="Red" data-is-required="1" required data-wapf-pricetype="fixed" data-wapf-price="5" />
+	<span class="wapf-ttp" >Red</span>
+
+	<input autocomplete="off" type="radio" id="wapf_field_622deaee195c0_5o0yv" name="wapf[field_622deaee195c0]" class="wapf-input" data-field-id="622deaee195c0" value="5o0yv" data-wapf-label="Orange" data-is-required="1" required data-wapf-pricetype="fixed" data-wapf-price="10" />
+	<span class="wapf-ttp" >Orange</span>
+
 </div>
 
 <!-- The canvas element is used to draw the 3D scene -->
